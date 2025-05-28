@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: -6876025467649096905}
   - component: {fileID: 3587036793116108349}
   - component: {fileID: 8402742785549509104}
+  - component: {fileID: 2558893182232046473}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -283,7 +284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edeb61d3051b0447a3b51f714bc7c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 1
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -410,3 +410,15 @@ MonoBehaviour:
   _player: {fileID: 8402742785549509104}
   controller: {fileID: 7553676476376497504}
   playerStats: {fileID: 11400000, guid: eed1c49d97da118488785ea4a3f3c0e7, type: 2}
+--- !u!114 &2558893182232046473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9004053246734339730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e993a7be5800591438e4bb4778503229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

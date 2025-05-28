@@ -7,4 +7,5 @@ public class PlayerStats : ScriptableObject
     public float walkspeed = 1f;
     public float maxHealth = 5f;
     public float health = 5f;
+    public bool dead = false;
 }

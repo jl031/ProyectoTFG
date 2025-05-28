@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using Mono.Data.Sqlite;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
 public class SQLiteAPI 
@@ -59,15 +62,45 @@ public class SQLiteAPI
         connection.Close();
     }
 
-    public static SQLiteAPI GetAPI(){
-        if (instance == null) {
+    public static SQLiteAPI GetAPI()
+    {
+        if (instance == null)
+        {
             instance = new SQLiteAPI();
         }
 
         return instance;
     }
 
-    private SQLiteAPI(){
+    public List<SaveFileData> GetSaveFilesData()
+    {
+        List<SaveFileData> files = new List<SaveFileData>();
+        IDbConnection connection = new SqliteConnection( getDbPath() );
+        connection.Open();
+
+        IDbCommand readSaveFiles = connection.CreateCommand();
+        readSaveFiles.CommandText = "SELECT name, run_in_progress FROM save_file;";
+        IDataReader reader = readSaveFiles.ExecuteReader();
+
+        while (reader.Read())
+        {
+            SaveFileData scriptableObjectData = ScriptableObject.CreateInstance<SaveFileData>();
+            scriptableObjectData.fileName = reader.GetString(0);
+
+            if (!reader.IsDBNull(1))
+            {
+                scriptableObjectData.gameInProgress = reader.GetInt32(1);
+            }
+
+            files.Add( scriptableObjectData );
+        }
+
+        connection.Close();
+        return files;
+    }
+
+    private SQLiteAPI()
+    {
 
     } 
 

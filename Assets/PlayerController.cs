@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float walkSpeed = 1f;
     public ContactFilter2D contactFilter;
     public float collisionOffset = 0.1f;
     public SwordAttack swordAttack;
@@ -29,10 +28,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        if (!canMove) {
+        if (Player.instance.playerStats.dead)
             return;
-        }
+
+        if (!canMove)
+            {
+                return;
+            }
 
         if (movementDirection == Vector2.zero) {
             animator.SetBool("IsMoving", false);
@@ -85,9 +87,15 @@ public class PlayerController : MonoBehaviour
     }
 
     private bool TryMove(Vector2 direction) {
+        if (Player.instance.playerStats.dead)
+            return false;
+
+        float walkSpeed = Player.instance.playerStats.walkspeed;
+
         if (direction == Vector2.zero) {
             return false;
         }
+
         int hitCount = rb.Cast(
             direction,
             contactFilter,
@@ -108,6 +116,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnFire(){
+        if (Player.instance.playerStats.dead)
+            return;
         animator.SetTrigger("SwordAttack");
         Attack();
     }

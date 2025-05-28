@@ -65,15 +65,21 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.37f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\DataSaving\SaveFileData.cs" />
     <Compile Include="Assets\Scripts\Items\StrengthPotion.cs" />
+    <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\SQLTEST.cs" />
+    <Compile Include="Assets\QuitGame.cs" />
     <Compile Include="Assets\SwordAttack.cs" />
     <Compile Include="Assets\Enemy.cs" />
     <Compile Include="Assets\HealthBarScript.cs" />
     <Compile Include="Assets\Scripts\ItemPickup.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\SlimeAI.cs" />
     <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
+    <Compile Include="Assets\LoadSaveFiles.cs" />
+    <Compile Include="Assets\Scripts\SaveFileClicked.cs" />
     <Compile Include="Assets\UI pack\Scripts\FillValueNumber.cs" />
     <Compile Include="Assets\Scripts\DataSaving\SQLiteAPI.cs" />
     <Compile Include="Assets\PlayerController.cs" />
