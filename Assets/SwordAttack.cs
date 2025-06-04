@@ -42,8 +42,13 @@ public class SwordAttack : MonoBehaviour
     }
 
     public void Attack(){
-        Debug.Log(damage + Player.instance.playerStats.damage);
-        switch(attackDirection) {
+        if (swordHitbox.enabled)
+        {
+            return;
+        }
+        
+        switch (attackDirection)
+        {
             case AttackDirection.left:
                 StartAttackLeft();
                 break;

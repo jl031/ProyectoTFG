@@ -12,6 +12,8 @@ public class LoadSaveFiles : MonoBehaviour
 
     public void Start()
     {
+        ResetButtons();
+
         SQLiteAPI api = SQLiteAPI.GetAPI();
         api.CreateSchema();
         List<SaveFileData> data = api.GetSaveFilesData();
@@ -34,7 +36,24 @@ public class LoadSaveFiles : MonoBehaviour
         }
     }
 
-    
+    private void ResetButtons()
+    {
+        ResetButton(file1);
+        ResetButton(file2);
+        ResetButton(file3);
+    }
+
+    private void ResetButton(GameObject file)
+    { 
+        GameObject fileContainer = file.transform.Find("NewGame").gameObject;
+
+        SaveFileClicked clickedScript = file.GetComponent<SaveFileClicked>();
+        clickedScript.data = null;
+
+        Text fileText = fileContainer.GetComponent<Text>();
+        fileText.text = "NEW FILE"; 
+    }
+
 
     void LoadFileData(SaveFileData fileData, GameObject file)
     {

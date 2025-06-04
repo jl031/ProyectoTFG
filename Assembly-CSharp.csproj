@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\LoadSaveFiles.cs" />
     <Compile Include="Assets\Scripts\SaveFileClicked.cs" />
+    <Compile Include="Assets\DeleteButton.cs" />
     <Compile Include="Assets\UI pack\Scripts\FillValueNumber.cs" />
     <Compile Include="Assets\Scripts\DataSaving\SQLiteAPI.cs" />
     <Compile Include="Assets\PlayerController.cs" />

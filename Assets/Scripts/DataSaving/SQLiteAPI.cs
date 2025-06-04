@@ -119,9 +119,16 @@ public class SQLiteAPI
         return true;
     }
 
-    public void deleteSaveFile(string name)
+    public void DeleteSaveFile(string name)
     { 
-        
+        IDbConnection connection = new SqliteConnection( getDbPath() );
+        connection.Open();
+
+        IDbCommand delete = connection.CreateCommand();
+        delete.CommandText = "DELETE FROM save_file WHERE name='" + name + "';";
+        delete.ExecuteReader();
+
+        connection.Close();
     }
 
     private SQLiteAPI()
