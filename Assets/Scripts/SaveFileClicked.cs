@@ -7,8 +7,9 @@ public class SaveFileClicked : MonoBehaviour, IPointerClickHandler, IPointerEnte
 {
     public int saveFileId;
     public SaveFileData data;
-
     private Image image;
+
+    [SerializeField] private LoadSaveFiles saveFiles;
 
     void Start()
     {
@@ -19,9 +20,11 @@ public class SaveFileClicked : MonoBehaviour, IPointerClickHandler, IPointerEnte
     {
         if (data == null)
         {
-
+            SQLiteAPI api = SQLiteAPI.GetAPI();
+            api.CreateSaveFile("Save File " + (saveFileId + 1));
+            saveFiles.Start();
         }
-        else
+        else if (data.gameInProgress <= 0)
         {
             SceneManager.LoadScene("Tutorial");
         }
@@ -29,11 +32,17 @@ public class SaveFileClicked : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        image.color = new Color(0.5f, 0.5f, 0.5f); 
+        image.color = new Color(0.5f, 0.5f, 0.5f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        image.color = new Color(1, 1, 1); 
+        image.color = new Color(1, 1, 1);
+    }
+
+    public void DeleteSaveFile()
+    {
+        SQLiteAPI api = SQLiteAPI.GetAPI();
+        saveFiles.Start();
     }
 }

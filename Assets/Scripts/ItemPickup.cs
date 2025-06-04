@@ -11,12 +11,16 @@ public class ItemPickup : MonoBehaviour
     public TextMeshProUGUI text;
     public GameObject prompt;
     public Item item;
-    private Boolean open = false;
+    private bool open = false;
+    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer itemSpriteRenderer;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         itemCollider = GetComponent<CircleCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        itemSpriteRenderer = item.gameObject.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -27,6 +31,8 @@ public class ItemPickup : MonoBehaviour
             animator.SetTrigger("OpenChest");
             item.OnPickup();
             item.Activate();
+            itemSpriteRenderer.sprite = Sprite.Create(item.sprite, new Rect(0, 0, 16, 16), new Vector2(0.5f, 0.5f));
+            itemSpriteRenderer.enabled = true;
             text.text = item.ItemName + "\n" + item.Description;
             text.gameObject.SetActive(true);
             Destroy(itemCollider);
@@ -40,6 +46,8 @@ public class ItemPickup : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         text.gameObject.SetActive(false);
+        spriteRenderer.enabled = false;
+        itemSpriteRenderer.enabled = false;
     }
 
 

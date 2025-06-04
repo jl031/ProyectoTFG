@@ -99,6 +99,31 @@ public class SQLiteAPI
         return files;
     }
 
+    public bool CreateSaveFile(string name)
+    { 
+        IDbConnection connection = new SqliteConnection( getDbPath() );
+        connection.Open();
+
+        IDbCommand command = connection.CreateCommand();
+        command.CommandText = "SELECT name, run_in_progress FROM save_file WHERE name = '"+name+"';";
+        IDataReader reader = command.ExecuteReader();
+        if (reader.Depth > 0) {
+            return false;
+        }
+
+        IDbCommand insert = connection.CreateCommand();
+        insert.CommandText = "INSERT INTO save_file(name, run_in_progress) VALUES('"+name+"', NULL)";
+        insert.ExecuteReader();
+
+        connection.Close();
+        return true;
+    }
+
+    public void deleteSaveFile(string name)
+    { 
+        
+    }
+
     private SQLiteAPI()
     {
 

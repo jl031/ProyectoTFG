@@ -3,19 +3,32 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float Health{
-        get {
+    public enum EnemyState
+    {
+        idle,
+        attacking,
+        dead
+    }
+    
+
+    public float Health
+    {
+        get
+        {
             return health;
         }
-        set {
+        set
+        {
             health = value;
-            if (health <= 0) {
+            if (health <= 0)
+            {
                 Defeat();
             }
         }
 
     }
 
+    public EnemyState state = EnemyState.idle;
     public float health = 1f;
     
     float damageFlashDuration = 0.2f;
@@ -32,7 +45,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void TakeDamage(float damage) {
-        if (Health <= 0) {
+        if (this.state == EnemyState.dead) {
             return;
         }
 
@@ -47,6 +60,7 @@ public class Enemy : MonoBehaviour
     }
 
     private void Defeat(){
+        this.state = EnemyState.dead;
         animator.SetTrigger("Defeated");        
     }
 

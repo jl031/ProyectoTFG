@@ -10,29 +10,34 @@ public class LoadSaveFiles : MonoBehaviour
     public GameObject file3;
 
 
-    void Start()
+    public void Start()
     {
         SQLiteAPI api = SQLiteAPI.GetAPI();
         api.CreateSchema();
         List<SaveFileData> data = api.GetSaveFilesData();
 
-        if (data.Count > 0)
+        foreach (SaveFileData file in data)
         {
-            LoadFileData(data[0], file1);
-        }
-        if (data.Count > 1)
-        {
-            LoadFileData(data[1], file1);
-        }
-        if (data.Count > 2)
-        {
-            LoadFileData(data[2], file1);
+            int id = file.fileName[file.fileName.Length - 1] - '0' - 1;
+            switch (id)
+            {
+                case 0:
+                    LoadFileData(file, file1);
+                    break;
+                case 1:
+                    LoadFileData(file, file2);
+                    break;
+                case 2:
+                    LoadFileData(file, file3);
+                    break;
+            }
         }
     }
 
+    
+
     void LoadFileData(SaveFileData fileData, GameObject file)
     {
-        Debug.Log(fileData.fileName + " " + file.name);
         GameObject fileContainer = file.transform.Find("NewGame").gameObject;
 
         SaveFileClicked clickedScript = file.GetComponent<SaveFileClicked>();
