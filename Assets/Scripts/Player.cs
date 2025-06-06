@@ -12,15 +12,19 @@ public class Player : MonoBehaviour
     void Start()
     {
         instance = _player;
+
+        RunData data = RunDataHandler.runData;
         if (playerStats == null)
         {
             playerStats = ScriptableObject.CreateInstance<PlayerStats>();
+            if (data.health > 0)
+            {
+                playerStats.health = data.health;
+            }
         }
+
+        Debug.Log("Floor: "+data.floor);
+        RunDataHandler.SaveRunData();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

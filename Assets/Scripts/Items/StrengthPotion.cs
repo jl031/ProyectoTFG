@@ -10,6 +10,11 @@ public class StrengthPotion : Item
         get => "+1 Damage";
     }
 
+    public override int ItemId
+    {
+        get => 1;
+    } 
+
     public override void Activate()
     {
         if (Player.instance.playerStats != null)

@@ -4,5 +4,5 @@ using UnityEngine;
 public class SaveFileData : ScriptableObject
 {
     public string fileName;
-    public int gameInProgress;    
+    public ulong gameInProgress;    
 }

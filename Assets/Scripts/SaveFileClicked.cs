@@ -7,14 +7,12 @@ public class SaveFileClicked : MonoBehaviour
 {
     public int saveFileId;
     public SaveFileData data;
-    private Image image;
-
     [SerializeField] private LoadSaveFiles saveFiles;
 
-    void Start()
-    {
-        image = GetComponent<Image>();
-    }
+    private string[] levels = {
+        "Tutorial",
+        "Level1"
+    };
 
     public void Clicked()
     {
@@ -24,9 +22,13 @@ public class SaveFileClicked : MonoBehaviour
             api.CreateSaveFile("Save File " + (saveFileId + 1));
             saveFiles.Start();
         }
-        else if (data.gameInProgress <= 0)
-        {
-            SceneManager.LoadScene("Tutorial");
+        else
+        { 
+            RunDataHandler.saveFileData = data;
+            RunDataHandler.LoadRunData();
+            Debug.Log(RunDataHandler.runData.floor);
+            Debug.Log("Loading : " + levels[RunDataHandler.runData.floor]);
+            SceneManager.LoadScene( levels[ RunDataHandler.runData.floor ] );
         }
     }
 

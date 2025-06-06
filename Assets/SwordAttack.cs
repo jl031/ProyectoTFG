@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -83,6 +84,8 @@ public class SwordAttack : MonoBehaviour
             if (enemy != null) {
                 
                 enemy.TakeDamage(damage + Player.instance.playerStats.damage);
+                RunDataHandler.runData.damage_dealt += damage + Player.instance.playerStats.damage;
+                RunDataHandler.runData.score += (int) Math.Floor(damage + Player.instance.playerStats.damage) * 10;
             }
 
         }   

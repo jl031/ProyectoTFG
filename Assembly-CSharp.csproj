@@ -73,6 +73,7 @@
     <Compile Include="Assets\SwordAttack.cs" />
     <Compile Include="Assets\Enemy.cs" />
     <Compile Include="Assets\HealthBarScript.cs" />
+    <Compile Include="Assets\Scripts\DataSaving\RunDataHandler.cs" />
     <Compile Include="Assets\Scripts\ItemPickup.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\SlimeAI.cs" />
@@ -80,9 +81,11 @@
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\LoadSaveFiles.cs" />
     <Compile Include="Assets\Scripts\SaveFileClicked.cs" />
+    <Compile Include="Assets\DungeonDoorScript.cs" />
     <Compile Include="Assets\DeleteButton.cs" />
     <Compile Include="Assets\UI pack\Scripts\FillValueNumber.cs" />
     <Compile Include="Assets\Scripts\DataSaving\SQLiteAPI.cs" />
+    <Compile Include="Assets\Scripts\DataSaving\RunItem.cs" />
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\Scripts\DataSaving\RunData.cs" />
   </ItemGroup>
