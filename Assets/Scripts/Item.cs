@@ -9,4 +9,13 @@ public abstract class Item : MonoBehaviour
     public abstract void OnPickup();
     public abstract void OnRemoval();
     public abstract void Activate();
+
+    public void AddToList()
+    {
+        RunItem runItem = ScriptableObject.CreateInstance<RunItem>();
+        runItem.itemId = ItemId;
+        runItem.itemName = ItemName;
+        runItem.runId = (ulong) RunDataHandler.runData.id;
+        RunDataHandler.runData.runItems.Add(runItem);
+    }
 }

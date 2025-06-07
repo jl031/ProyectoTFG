@@ -12,7 +12,7 @@ public class StrengthPotion : Item
 
     public override int ItemId
     {
-        get => 1;
+        get => 0;
     } 
 
     public override void Activate()

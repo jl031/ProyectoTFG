@@ -19,7 +19,6 @@ public class RunDataHandler
     {
         if (saveFileData.gameInProgress <= 0)
         {
-            Debug.Log("Creating new run. Current id: "+saveFileData.gameInProgress);
             runData = ScriptableObject.CreateInstance<RunData>();
             runData.id = (ulong) DateTime.Now.Ticks;
             return;
@@ -27,7 +26,6 @@ public class RunDataHandler
 
 
         // TODO: Read the data
-        Debug.Log("Game id loaded: "+saveFileData.gameInProgress);
         runData = SQLiteAPI.GetAPI().GetRunData(saveFileData.gameInProgress);
 
     }

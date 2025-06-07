@@ -61,6 +61,8 @@ public class Enemy : MonoBehaviour
 
     private void Defeat(){
         this.state = EnemyState.dead;
+        RunDataHandler.runData.money += 10;
+        RunDataHandler.runData.score += 50;
         animator.SetTrigger("Defeated");        
     }
 

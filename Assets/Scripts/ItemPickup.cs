@@ -31,6 +31,7 @@ public class ItemPickup : MonoBehaviour
             animator.SetTrigger("OpenChest");
             item.OnPickup();
             item.Activate();
+            item.AddToList();
             itemSpriteRenderer.sprite = Sprite.Create(item.sprite, new Rect(0, 0, 16, 16), new Vector2(0.5f, 0.5f));
             itemSpriteRenderer.enabled = true;
             text.text = item.ItemName + "\n" + item.Description;

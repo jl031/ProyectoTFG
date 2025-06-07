@@ -4,6 +4,6 @@ using UnityEngine;
 public class RunItem : ScriptableObject
 {
     public string itemName;
-    public int runId;
+    public ulong runId;
     public int itemId;
 }

@@ -23,8 +23,17 @@ public class Player : MonoBehaviour
             }
         }
 
-        Debug.Log("Floor: "+data.floor);
         RunDataHandler.SaveRunData();
+        LoadItems();
+    }
+
+    void LoadItems()
+    {
+        foreach (RunItem runItem in RunDataHandler.runData.runItems)
+        {
+            Item item = ItemHandler.GetItemHandler().GetItem(runItem.itemId);
+            item.Activate();   
+        }
     }
 
 }

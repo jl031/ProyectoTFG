@@ -243,6 +243,7 @@ public class SQLiteAPI
         while (itemReader.Read()){
             RunItem item = ScriptableObject.CreateInstance<RunItem>();
             item.itemId = itemReader.GetInt32(0);
+            item.runId = runData.id;
             runData.runItems.Add( item );
         }
 

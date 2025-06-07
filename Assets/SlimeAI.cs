@@ -24,6 +24,8 @@ public class SlimeAI : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        Physics2D.IgnoreLayerCollision(6, 6);
     }
 
     // Update is called once per frame
@@ -40,7 +42,8 @@ public class SlimeAI : MonoBehaviour
         Vector2 playerPosition = Player.instance.controller.transform.position;
         Vector2 enemyPosition = transform.position;
 
-        if ((playerPosition - enemyPosition).magnitude < 0.5f)
+        float distance = (playerPosition - enemyPosition).magnitude;
+        if (distance < 0.5f && distance > 0.05f)
         {
             direction = (playerPosition - enemyPosition).normalized;
             animator.SetBool("Moving", true);
