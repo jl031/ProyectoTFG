@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject gameOverScreen;
     private DateTime iframeEnd;
     void Start()
     {
@@ -28,6 +29,8 @@ public class PlayerHealth : MonoBehaviour
 
                 Animator animator = gameObject.GetComponent<Animator>();
                 animator.SetTrigger("Dead");
+                gameOverScreen.SetActive(true);
+                RunDataHandler.EndGame();
             }
         }
     }

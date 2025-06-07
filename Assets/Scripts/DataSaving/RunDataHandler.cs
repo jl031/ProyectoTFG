@@ -34,7 +34,7 @@ public class RunDataHandler
 
     public static void EndGame()
     {
+        runData.finished = true;
         SaveRunData();
-        // TODO: Show end screen
     }
 }
