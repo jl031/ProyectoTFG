@@ -5,14 +5,8 @@ using UnityEngine.UI;
 public class DungeonDoorScript : MonoBehaviour
 {
 
-    CircleCollider2D doorCollider;
     [SerializeField] private GameObject textPrompt;
     private bool promptEnabled = false;
-
-    void Start()
-    {
-        doorCollider = GetComponent<CircleCollider2D>();
-    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {

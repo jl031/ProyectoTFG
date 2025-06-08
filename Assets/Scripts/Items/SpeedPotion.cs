@@ -18,16 +18,14 @@ public class SpeedPotion : Item
 
     public override void Activate()
     {
-        throw new System.NotImplementedException();
+        Player.instance.playerStats.walkspeed += 1f;
     }
 
     public override void OnPickup()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void OnRemoval()
     {
-        throw new System.NotImplementedException();
     }
 }
